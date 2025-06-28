@@ -21,7 +21,7 @@ const useStore = create( () => ( {
     { position: [-0.5, 2.5, -2], r: 0.6, geometry: new IcosahedronGeometry( 2 ) },
     { position: [-0.8, -0.75, 3], r: 0.35, geometry: new TorusGeometry( 1.1, 0.35, 16, 32 ) },
     { position: [1.5, 0.5, -2], r: 0.8, geometry: new OctahedronGeometry( 2 ) },
-    { position: [-1, -0.5, -6], r: 0.5, geometry: new SphereGeometry( 1.5, 32, 32 ) },
+    { position: [-2, -0.5, -6], r: 0.5, geometry: new SphereGeometry( 1.5, 32, 32 ) },
     { position: [1, 1.9, -1], r: 0.2, geometry: new BoxGeometry( 2.5, 2.5, 2.5 ) },
   ],
   material: new MeshStandardMaterial()
@@ -48,7 +48,7 @@ function Geometries () {
   const { items, material } = useStore();
   const transition = useTransition( items, {
     from: { scale: [0, 0, 0], rotation: [0, 0, 0] },
-    enter: ( { r } ) => ( { scale: [1, 1, 1], rotation: [r * 3, r * 3, r * 3] } ),
+    enter: ( { r } ) => ( { scale: [1.5, 1.5, 1.5], rotation: [r * 3, r * 3, r * 3] } ),
     leave: { scale: [0.1, 0.1, 0.1], rotation: [0, 0, 0] },
     config: { mass: 5, tension: 1000, friction: 100 },
     trail: 100
@@ -89,7 +89,8 @@ function Box ( props: BoxProps ) {
 export default function App () {
   const { color } = useSpring( { color: 0, from: { color: 1 }, config: { friction: 50 }, loop: true } );
   return (
-    <Canvas camera={ { position: [0, 0, 15], near: 5, far: 40 } }>
+    <Canvas style={ { height: '100vh', width: '100vw' } }
+      camera={ { position: [0, 0, 15], near: 5, far: 40 } }>
       <color attach="background" args={ ['white'] } />
       <a.fog attach="fog" args={ ['white', 10, 40] } color={ color.to( [0, 0.2, 0.4, 0.7, 1], ['white', 'red', 'white', 'red', 'white'] ) } />
       <ambientLight intensity={ 0.8 } />
