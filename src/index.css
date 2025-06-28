@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  background: white;
+}
+
+a {
+  cursor: pointer;
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+}
